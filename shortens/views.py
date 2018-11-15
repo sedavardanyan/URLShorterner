@@ -11,7 +11,7 @@ def create(request):
         url = Url()
         url.original = request.POST['link']
         url.author = request.user
-        url.shortened = f"http://{request.get_host()}/{shorten(url.original)}"
+        url.shortened = f"http://{request.get_host()}/{shorten()}"
         url.save()
         return render(request, 'shortens/create.html', {"link": url.shortened})
     else:
@@ -30,7 +30,7 @@ def home(request):
     return render(request, 'shortens/home.html')
 
 
-def shorten(url)-> str:
+def shorten()-> str:
     print(hash(url))
     chars = string.ascii_letters + string.digits
     return "".join(random.choice(chars) for _ in range(5))
