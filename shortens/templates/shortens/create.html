@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New shortcut</title>
+</head>
+<body>
+{% extends  'base.html'%}
+{% block content %}
+    <div class="container">
+        <form method="POST" action={% url 'shortens:create' %}>
+            {% csrf_token %}
+            <label>URL:</label>
+            <input type="url" name="link"/>
+            <input type="submit" value="Shorten"/>
+        </form>
+
+        {% if link %}
+            <a href={{ link }}>{{ link }}</a>
+        {% endif %}
+    </div>
+{% endblock %}
+</body>
+</html>

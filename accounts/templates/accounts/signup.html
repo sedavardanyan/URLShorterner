@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Sing Up</h1>
+        <form method="POST" action="{% url 'accounts:signup' %}">
+            {% csrf_token %}
+            <label>Username: </label>
+            <br />
+            <input type="text" name="username"/>
+            <br />
+            <label>Password:</label>
+            <br />
+            <input type="password" name="password1"/>
+            <br />
+            <label>Confirm password:</label>
+            <br />
+            <input type="password" name="password2"/>
+            <br />
+            <br />
+            <input class="btn btn-primary" type="submit" value="Sign up" />
+        </form>
+
+    {% if massage %}
+        {{ massage}}
+    {% endif %}
+    {% endblock %}
+</div>
+</body>
+</html>

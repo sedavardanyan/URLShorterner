@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{% extends  'base.html'%}
+{% block content %}
+    <div class="container">
+        <h1>Home page</h1>
+        <a href= {% url 'shortens:create' %}><input class="btn btn-primary" type="submit" value="Shorten"/></a>
+        <a href={% url 'shortens:check' %}><input class="btn btn-primary" type="submit" value="Check"/></a>
+    </div>
+    {% if link %}
+    {{ link }}
+    {% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check</title>
+</head>
+<body>
+{% extends  'base.html'%}
+{% block content %}
+    <div class="container">
+        <form method="POST" action={% url 'shortens:check' %}>
+            {% csrf_token %}
+            <label>URL:</label>
+            <input type="text" name="link"/>
+            <input type="submit" value="Check"/>
+        </form>
+    {% if link %}
+    <h3>Total visits: {{ link }}</h3>
+    {% endif %}
+    </div>
+{% endblock %}
+</body>
+</html>
